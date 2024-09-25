@@ -52,6 +52,8 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
+	;
 }
 header {
 	display: flex;
@@ -125,6 +127,7 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -178,6 +181,33 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+}
+
+.categoriesDiv {
+	display: flex;
+	gap: 10px;
+	max-width: 586px;
+	margin: auto;
+	padding: 50px;
+	justify-content: center;
+}
+
+
+.filter-btn {
+	background-color:#FFFEF8;
+	color: #1D6154;
+	text-align: center;
+	border-radius: 60px;
+	padding: 9.1px 20px;
+	transition: all 250ms ease-in-out;
+	border: 1px solid #1D6154;
+	font-weight: bold;
+	font-family: 'Syne';
+}
+
+.filter-btn:hover {
+	color: white;
+	background-color: #1D6154;
 }
 
 footer nav ul {

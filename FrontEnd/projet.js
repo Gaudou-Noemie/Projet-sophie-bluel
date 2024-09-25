@@ -1,12 +1,9 @@
-const reponse = await fetch("http://localhost:5678/api/works"); //on recupère les donnees de l'API dans "reponse"
-const gallery = await reponse.json();                            //on convertie la réponse en format json
-//  gallery = JSON.parse(gallery);                               //on convertie le format json en objet javascripts
-
+import "./categories.js"
 
 function generergallery(gallery) {                               // on crée une fonction que va generer la gallery
     for (let i=0; i < gallery.length; i++) {                     // on crée une boucle qui va s'executer le nombre de fois qu'il y a d'objet dans gallery
 
-   const projet = gallery[i];                                      //projet va contenir la valeur de gallery(objet js)
+    const projet = gallery[i];                                      //projet va contenir la valeur de gallery(objet js)
 
  const divGallery = document.querySelector(".gallery");          //on selection la div  nommé "gallery"
  const projetElement = document.createElement("article");        // on crée un article qui sera le parent de chaque projet photo
@@ -28,4 +25,13 @@ projetElement.appendChild(titleElement);                          //titleElement
  }
 }
 
-generergallery(gallery);                                           //appel la fonction avec les données du tableau gallery
+
+try{                                                               //on lui demande de récuperer les informations de l'API
+    const reponse = await fetch("http://localhost:5678/api/works"); //on recupère les donnees de l'API dans "reponse"
+    const gallery = await reponse.json();                           //on convertie la réponse en format json
+    generergallery(gallery);                                        //appel la fonction avec les données du tableau gallery
+
+} catch(error){                                                    // si il y à une erreur de récupération de données
+     divGallery = document.querySelector(".gallery")          // on selection l'endroit ou il peut y avoir une erreur
+    divGallery.innerText = "Les données de l'API n'ont pu être récupérées."  //On indique le problème dans divGallery
+}
