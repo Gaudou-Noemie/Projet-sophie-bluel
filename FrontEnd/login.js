@@ -26,29 +26,29 @@ const firstLi = categoriesUl.querySelector("li");                            // 
     buttonLogin.addEventListener("click", function() {                      // On crée une fonction d'écoute sur le bouton login
         document.querySelector("main").innerText = "";                      // On lorsque le bouton est séléctionnée le "main se vide"
 
-        const formulaire = document.createElement("form");                  // On crée un formulaire de connection
-          formulaire.innerHTML = "<h2>Log In</h2>";                         // On lui donne le titre "Log In"
-          formulaire.classList.add("formLogin");                            // On lui donne une class "formLogin"
 
-const titleMail = document.createElement("p");                              // On crée un paragraphe
-titleMail.innerText = "E-mail";                                             // Le texte sera "E-mail"
-titleMail.classList.add("titleMail");                                       // On lui donne une class "titleMail"
+    const formulaire = document.createElement("form");                      // On crée un formulaire de connection
+    formulaire.innerHTML = "<h2>Log In</h2>";                               // On lui donne le titre "Log In"
+    formulaire.classList.add("formLogin");                                  // On lui donne une class "formLogin"
+
+
 
 const userMail = document.createElement("input");                           // On crée un imput
 userMail.classList.add("userMail");                                         // On lui crée une class "userMail"
-userMail.setAttribute("label", "email");                                    // On lui crée un label nommé "email"
+const labelMail = document.createElement("label");                          // On lui crée un label
+labelMail.innerText= "E-mail";
+labelMail.setAttribute("for","E-mail");
+userMail.setAttribute("id", "E-mail");
 userMail.setAttribute("type", "email");                                     // On lui crée un type "email"
 
 
 
-const titlePassword = document.createElement("p");                          // On crée un paragraphe
-titlePassword.innerText = "Mot de passe";                                   // Le texte sera "Mot de passe"
-titlePassword.classList.add("titlePassword");                               // On lui donne une class "titlePassword"
-
-
 const userPassword = document.createElement("input");                       // On crée un imput
 userPassword.classList.add("userPassword");                                 // On lui crée une class "userPassword"
-userPassword.setAttribute("label", "Mot de passe");                         // On lui crée un label nommé "Mot de passe"
+const labelPassword = document.createElement("label");
+labelPassword.innerText = "Mot de passe";
+labelPassword.setAttribute("for","Password");
+userPassword.setAttribute("id", "Password");
 userPassword.setAttribute("type", "password");                              // On lui crée un type "password"
 
 
@@ -64,9 +64,11 @@ forgotPassword.innerText = "Mot de passe oublié";                           // 
 
 
 
-formulaire.appendChild(titleMail);                                          // titleMail sera l'enfant de formulaire
+formulaire.appendChild(labelMail);
+
 formulaire.appendChild(userMail);                                           // userMail sera l'enfant de formulaire
-formulaire.appendChild(titlePassword);                                      // titlePassword sera l'enfant de formulaire
+
+formulaire.appendChild(labelPassword);
 formulaire.appendChild(userPassword);                                       // userPassword sera l'enfant de formulaire
 formulaire.appendChild(sendBtn);                                            // sendBtn sera l'enfant de formulaire
 formulaire.appendChild(forgotPassword);                                     //forgotPassword sera l'enfant de formulaire
@@ -76,14 +78,12 @@ main.appendChild(formulaire);                                               // f
   });      
   
   
-  
+// try {
+//   const reponse = await fetch ("http://localhost:5678/api/users/login");
+//   const login = await reponse.json(); 
+//   window.login = login
 
-
-
-
-
-
-
+// }
 
 // console.log("Le bouton 'login' a été cliqué et le formulaire est ajouté à main.");                // On verifie dans la console
 

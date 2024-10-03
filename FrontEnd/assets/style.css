@@ -237,13 +237,6 @@ footer nav ul {
 	
 }
 
-.titleMail{
-	display: flex;
-	width: 380px;
-	margin-top: 30px;
-	font-weight: 500;
-}
-
 .userMail{
 	width: 379px;
 	display: flex;
@@ -252,13 +245,6 @@ footer nav ul {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	height: 51px;
 	margin-top: 15px;
-}
-
-.titlePassword{
-	display: flex;
-	width: 380px;
-	margin-top: 30px;
-	font-weight: 500;
 }
 
 .userPassword{
