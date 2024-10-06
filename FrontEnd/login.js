@@ -79,7 +79,6 @@ divPassword.appendChild(labelPassword);                                      // 
 divPassword.appendChild(userPassword);                                       // userPassword sera l'enfant de formulaire
 
 
-
 formulaire.appendChild(sendBtn);                                            // sendBtn sera l'enfant de formulaire
 formulaire.appendChild(forgotPassword);                                     //forgotPassword sera l'enfant de formulaire
 
@@ -119,23 +118,36 @@ formulaire.addEventListener("submit", async (e) => {                       // On
             categoriesDiv.style.display = 'none';                          // On la masque 
 
         
+        const iModify = document.createElement("i")                       // On crée un i nommé iModifiy
+        iModify.classList.add("fa-regular", "fa-pen-to-square");          // On lui donne une class
 
+ 
+        const btnModify = document.createElement("button");               // On crée une bouton "btnModify"
+        btnModify.classList.add("btnModify");                             // On lui donne une class "btnModify"
 
-        const btnModify = document.createElement("button");
-        btnModify.innerText = "modifier";
-        btnModify.classList.add("btnModify");
+        btnModify.appendChild(iModify);                                   // iModify devient l'enfant de btnModify
 
-        const sectionModify = document.getElementById("portfolioT");
-        sectionModify.insertAdjacentElement("afterend", btnModify);
+        const textModify = document.createTextNode(" modifier");          // On crée le texte de textModify
+        btnModify.appendChild(textModify);                                // textModify devient l'enfant de btnModify
 
-        main.appendChild(sectionModify);
-        sectionModify.appendChild(btnModify);
+    
+     
+        const sectionModify = document.getElementById("portfolioT");      // On récupère la section portfolio
+        sectionModify.insertAdjacentElement("afterend", btnModify);       // On indique le sens d'affichage
+    
         
+        sectionModify.appendChild(btnModify);                             // btnModify sera l'enfant de sectionModify
+       
+
+        
+        const galleryDiv = document.querySelector(".gallery");            // On récupère la galerie 
+        galleryDiv.parentNode.insertBefore(sectionModify, galleryDiv);    // On insert la section avant la galerie
+
        generergallery(window.gallery);                                    // On génère la gallery
 
   
         } else {
-            alert("Email ou mot de passe incorrect.");                    // Si ça ne fonctionne pas on envoie une alerte
+            alert("Erreur dans l’identifiant ou le mot de passe.");       // Si ça ne fonctionne pas on envoie une alerte
         }
     } catch (error) {                                                     // Si rien ne fonctionne on envoie une alerte
         console.error ("Erreur lors de la connexion:", error);

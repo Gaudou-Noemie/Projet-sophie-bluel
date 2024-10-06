@@ -283,3 +283,9 @@ footer nav ul {
 	border-bottom: 1px solid black; /* La ligne de soulignement */
     padding-bottom: 1px;
 }
+
+.btnModify{
+	border: none;
+	background-color: #FFFEF8;
+	margin-left: 8px;
+}
