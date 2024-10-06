@@ -6,7 +6,6 @@ try{
 
     const categoriesDiv = document.querySelector(".categoriesDiv");       // Sélection de la div où les boutons seront ajoutés
 
-
         
         const allButton = document.createElement("button");                // Créer le bouton "Tous"
         allButton.classList.add("filter-btn");                             // Bouton "Tous" aura une classe nommé "filter-btn"

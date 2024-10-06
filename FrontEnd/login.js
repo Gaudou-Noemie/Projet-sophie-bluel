@@ -24,33 +24,40 @@ const firstLi = categoriesUl.querySelector("li");                            // 
     
     const main = document.querySelector("main");                            // On selectionne le "main"
     buttonLogin.addEventListener("click", function() {                      // On crée une fonction d'écoute sur le bouton login
-        document.querySelector("main").innerText = "";                      // On lorsque le bouton est séléctionnée le "main se vide"
+        document.querySelector("main");                                     // On sélectionne le "main"
+        main.style.display = 'none';                                        // On le fait disparaitre sans le supprimer
 
+ const loginContainer = document.createElement("div");                      // On crée une div nommée "loginContainer"
+ loginContainer.classList.add("login-container");                           // On lui donne une class "login-container"
 
     const formulaire = document.createElement("form");                      // On crée un formulaire de connection
     formulaire.innerHTML = "<h2>Log In</h2>";                               // On lui donne le titre "Log In"
     formulaire.classList.add("formLogin");                                  // On lui donne une class "formLogin"
 
-
+const divMail = document.createElement("div");                              // On crée une div nommée "divMail"
+divMail.classList.add("divMail");                                           // On lui donne la class "divMail"
 
 const userMail = document.createElement("input");                           // On crée un imput
 userMail.classList.add("userMail");                                         // On lui crée une class "userMail"
 const labelMail = document.createElement("label");                          // On lui crée un label
-labelMail.innerText= "E-mail";
-labelMail.setAttribute("for","E-mail");
-userMail.setAttribute("id", "E-mail");
+labelMail.innerText= "E-mail";                                              // Le texte sera "E-mail"
+labelMail.setAttribute("for","email");                                      // On crée un for "email"
+userMail.setAttribute("id", "e-mail");                                       // On crée un id "email"
 userMail.setAttribute("type", "email");                                     // On lui crée un type "email"
 
 
 
 const userPassword = document.createElement("input");                       // On crée un imput
 userPassword.classList.add("userPassword");                                 // On lui crée une class "userPassword"
-const labelPassword = document.createElement("label");
-labelPassword.innerText = "Mot de passe";
-labelPassword.setAttribute("for","Password");
-userPassword.setAttribute("id", "Password");
+const labelPassword = document.createElement("label");                      // On lui crée un label
+labelPassword.innerText = "Mot de passe";                                   // le texte sera "Mot de passe"
+labelPassword.setAttribute("for","password");                               // On lui crée un for "password"
+userPassword.setAttribute("id", "password");                                // On lui crée un id "password"
 userPassword.setAttribute("type", "password");                              // On lui crée un type "password"
 
+
+const divPassword = document.createElement("div");                           // On crée une div nommée "divPassword"
+divPassword.classList.add("divPassword")                                     // On lui donne une class "divPassword"
 
 const sendBtn = document.createElement("button");                           // On crée un bouton
 sendBtn.setAttribute("type", "submit");                                     // De type envoie
@@ -63,44 +70,79 @@ forgotPassword.classList.add("forgotPassword");                             // O
 forgotPassword.innerText = "Mot de passe oublié";                           // Le texte sera "Mot de passe oublié"
 
 
+formulaire.appendChild(divMail)                                              // divMail sera l'enfant de formulaire
+divMail.appendChild(labelMail);                                              // labelMail sera l'enfant de divMail
+divMail.appendChild(userMail);                                               // userMail sera l'enfant de formulaire
 
-formulaire.appendChild(labelMail);
+formulaire.appendChild(divPassword)                                          // divPassword sera l'enfant de formulaire
+divPassword.appendChild(labelPassword);                                      // labelPassword sera l'enfant de divPassword
+divPassword.appendChild(userPassword);                                       // userPassword sera l'enfant de formulaire
 
-formulaire.appendChild(userMail);                                           // userMail sera l'enfant de formulaire
 
-formulaire.appendChild(labelPassword);
-formulaire.appendChild(userPassword);                                       // userPassword sera l'enfant de formulaire
+
 formulaire.appendChild(sendBtn);                                            // sendBtn sera l'enfant de formulaire
 formulaire.appendChild(forgotPassword);                                     //forgotPassword sera l'enfant de formulaire
 
 
 main.appendChild(formulaire);                                               // formulaire sera l'enfant de main
-  });      
+loginContainer.appendChild(formulaire);
+document.body.appendChild(loginContainer);    
   
+formulaire.addEventListener("submit", async (e) => {                       // On écoute le bouton d'envoie du formulaire
+  e.preventDefault();                                                      // On arrête l'évènement de rechargement
+  console.log(userMail.value, userPassword.value)                          // On vérifie les données dans la console
   
-// try {
-//   const reponse = await fetch ("http://localhost:5678/api/users/login");
-//   const login = await reponse.json(); 
-//   window.login = login
+  if (!userMail.value) {                                                   // Si userMail est vide on l'indique
+ 
+   alert("L'email est requis.");                                           // On affiche un message d'alerte
 
-// }
+} else if (!userPassword.value){                                           // Si userPassword est vide on l'indique
+    alert("Le mode de passe est requis.");                                 // On affiche un message d'alerte
+} else{
+    try {
+        const res = await fetch("http://localhost:5678/api/users/login", { // On récupère les données de l'API
+            method: "POST",                                                // On lui envoie les données avec POST
+            headers: {"Content-Type": "application/json"},                 // En format json
+            body: JSON.stringify({                                         // On converti les données en json
+                email: userMail.value,                                     // On envoie les valeurs de userMail
+                password: userPassword.value                               // On envoie les valeurs de userPassword
+            })
+        });
 
-// console.log("Le bouton 'login' a été cliqué et le formulaire est ajouté à main.");                // On verifie dans la console
+        if (res.ok) {                                                      // Si res est ok 
+            const data = await res.json();                                 // On convertie en json
+            console.log("connexion réussie:", data);                       // On vérifie dans la console
+            loginContainer.style.display = 'none';                         // Masquer le conteneur de connexion
+            main.style.display = 'block';                                  // Réaffiche le "main"
+
+            const categoriesDiv = document.querySelector(".categoriesDiv");// On récupère la div
+            categoriesDiv.style.display = 'none';                          // On la masque 
+
+        
 
 
+        const btnModify = document.createElement("button");
+        btnModify.innerText = "modifier";
+        btnModify.classList.add("btnModify");
 
-//         console.log("Le bouton 'login' a été cliqué");                    
-//    
+        const sectionModify = document.getElementById("portfolioT");
+        sectionModify.insertAdjacentElement("afterend", btnModify);
 
+        main.appendChild(sectionModify);
+        sectionModify.appendChild(btnModify);
+        
+       generergallery(window.gallery);                                    // On génère la gallery
 
+  
+        } else {
+            alert("Email ou mot de passe incorrect.");                    // Si ça ne fonctionne pas on envoie une alerte
+        }
+    } catch (error) {                                                     // Si rien ne fonctionne on envoie une alerte
+        console.error ("Erreur lors de la connexion:", error);
+        alert("Erreur de connexion. Veuillez réessayer.");
+    }
+}
 
-    
+}); 
+}); 
 
-    // buttonProjets.addEventListener("click", function() {
-
-    //     console.log("Le bouton 'projets' a été cliqué");
-    // });
-    
-    // buttonContact.addEventListener("click", function() {
-    //     console.log("Le bouton 'contact' a été cliqué");
-    // });

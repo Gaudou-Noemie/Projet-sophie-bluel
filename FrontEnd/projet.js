@@ -4,6 +4,8 @@ import "./login.js"
 window.gallery = [];                                             // On indique que gallery est une variable globale
 window.generergallery = generergallery;                          // On rend la fonction generergallery globale
 
+
+
 function generergallery(gallery) {                               // On crée une fonction que va generer la gallery
     for (let i=0; i < gallery.length; i++) {                     // On crée une boucle qui va s'executer le nombre de fois qu'il y a d'objet dans gallery
 
