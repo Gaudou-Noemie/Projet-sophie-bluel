@@ -14,25 +14,36 @@ const buttonLogin = document.createElement("button");                        // 
 buttonLogin.innerText = "login";                                             // On le nomme "login"
 buttonLogin.classList.add("nav-btn")                                         // on lui donne une class "nav-btn"
 
+const buttonLogout = document.createElement("button");
+buttonLogout.innerText = "logout";
+buttonLogout.classList.add("nav-btn");
+buttonLogout.style.display = 'none'
+
 const firstLi = categoriesUl.querySelector("li");                            // On selectionne le li "logo"
 
 
     categoriesUl.insertBefore(buttonProjets, firstLi);                       // On indique le sens d'affichage
     categoriesUl.insertBefore(buttonContact, firstLi);                       // On indique le sens d'affichage
     categoriesUl.insertBefore(buttonLogin, firstLi);                         // On indique le sens d'affichage
-
+    categoriesUl.insertBefore(buttonLogout, firstLi);
     
     const main = document.querySelector("main");                            // On selectionne le "main"
     buttonLogin.addEventListener("click", function() {                      // On crée une fonction d'écoute sur le bouton login
         document.querySelector("main");                                     // On sélectionne le "main"
         main.style.display = 'none';                                        // On le fait disparaitre sans le supprimer
+        
+  
 
  const loginContainer = document.createElement("div");                      // On crée une div nommée "loginContainer"
  loginContainer.classList.add("login-container");                           // On lui donne une class "login-container"
+ const body = document.querySelector("body");
+ const footer = document.querySelector("footer");
+ body.insertBefore(loginContainer, footer);
 
     const formulaire = document.createElement("form");                      // On crée un formulaire de connection
     formulaire.innerHTML = "<h2>Log In</h2>";                               // On lui donne le titre "Log In"
     formulaire.classList.add("formLogin");                                  // On lui donne une class "formLogin"
+
 
 const divMail = document.createElement("div");                              // On crée une div nommée "divMail"
 divMail.classList.add("divMail");                                           // On lui donne la class "divMail"
@@ -113,6 +124,8 @@ formulaire.addEventListener("submit", async (e) => {                       // On
             console.log("connexion réussie:", data);                       // On vérifie dans la console
             loginContainer.style.display = 'none';                         // Masquer le conteneur de connexion
             main.style.display = 'block';                                  // Réaffiche le "main"
+             buttonLogout.style.display = "block"
+             buttonLogin.style.display = "none"
 
             const categoriesDiv = document.querySelector(".categoriesDiv");// On récupère la div
             categoriesDiv.style.display = 'none';                          // On la masque 
