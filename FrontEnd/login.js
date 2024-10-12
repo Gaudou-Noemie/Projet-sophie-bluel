@@ -36,9 +36,7 @@ const firstLi = categoriesUl.querySelector("li");                            // 
 
  const loginContainer = document.createElement("div");                      // On crée une div nommée "loginContainer"
  loginContainer.classList.add("login-container");                           // On lui donne une class "login-container"
- const body = document.querySelector("body");
- const footer = document.querySelector("footer");
- body.insertBefore(loginContainer, footer);
+
 
     const formulaire = document.createElement("form");                      // On crée un formulaire de connection
     formulaire.innerHTML = "<h2>Log In</h2>";                               // On lui donne le titre "Log In"
@@ -96,7 +94,10 @@ formulaire.appendChild(forgotPassword);                                     //fo
 
 main.appendChild(formulaire);                                               // formulaire sera l'enfant de main
 loginContainer.appendChild(formulaire);
-document.body.appendChild(loginContainer);    
+const body =document.querySelector("body");
+body.appendChild(loginContainer);  
+const footer = document.querySelector("footer");
+body.insertBefore(loginContainer, footer);
   
 formulaire.addEventListener("submit", async (e) => {                       // On écoute le bouton d'envoie du formulaire
   e.preventDefault();                                                      // On arrête l'évènement de rechargement
@@ -129,6 +130,7 @@ formulaire.addEventListener("submit", async (e) => {                       // On
 
             const categoriesDiv = document.querySelector(".categoriesDiv");// On récupère la div
             categoriesDiv.style.display = 'none';                          // On la masque 
+            localStorage.setItem("token", data.token)
 
         
         const iModify = document.createElement("i")                       // On crée un i nommé iModifiy
