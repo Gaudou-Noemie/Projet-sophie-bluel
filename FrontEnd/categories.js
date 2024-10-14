@@ -33,14 +33,14 @@ try{
             return item.categoryId === parseInt(categoryIdToFilter);       // Compare les IDs
        
         });
-    console.log("Catégorie filtrée :", categoryIdToFilter);           // On vérifie les données dans la console
-    console.log("Galerie filtrée :", filteredGallery);                    // On vérifie les données dans la console
+    console.log("Catégorie filtrée :", categoryIdToFilter);                // On vérifie les données dans la console
+    console.log("Galerie filtrée :", filteredGallery);                     // On vérifie les données dans la console
         
    
-    generergallery(filteredGallery);                                      // On génère la gallery filtré
+    generergallery(filteredGallery);                                       // On génère la gallery filtré
     });   
   
-        categoriesDiv.appendChild(button);                                      // Bouton devient l'enfant de categoriesDiv
+        categoriesDiv.appendChild(button);                                 // Bouton devient l'enfant de categoriesDiv
 });
 
 } catch (error){

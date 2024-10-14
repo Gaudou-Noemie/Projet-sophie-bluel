@@ -1,5 +1,28 @@
+import { createModal } from './modale.js';
+
 const categoriesUl = document.querySelector(".categoriesUl");                // On selectionne le ul
 console.log(categoriesUl);                                                   // On verifie dans la console
+
+
+
+const divEdition = document.createElement("div");                            // On crée une div
+divEdition.classList.add("divEdition");                                      // On lui donne une classe "divEdition"
+divEdition.style.display = "none"                                            // On la cache
+
+const iModify1 = document.createElement("i");                                // On crée un i nommé iModifiy1
+iModify1.classList.add("fa-regular", "fa-pen-to-square");                    // On lui donne une class
+
+const textModify1 = document.createTextNode(" Mode édition");                // On lui donne une class "textModify1"
+
+const body = document.querySelector("body");                                 // on récupère le "body"
+body.appendChild(divEdition);                                                // divEdition sera l'enfant de header
+divEdition.appendChild(iModify1);                                            // iModify1 sera l'enfant de divEdition
+divEdition.appendChild(textModify1);                                         // textModify1 sera l'enfant de iModify1
+
+const header = document.querySelector("header");                             // On récupère le "header"
+body.insertBefore(divEdition, header);                                       // On indique le positionnement
+
+
 
 
 const buttonProjets = document.createElement("button");                      // On crée un bouton
@@ -12,12 +35,12 @@ buttonContact.classList.add("nav-btn")                                       // 
 
 const buttonLogin = document.createElement("button");                        // On crée un bouton
 buttonLogin.innerText = "login";                                             // On le nomme "login"
-buttonLogin.classList.add("nav-btn")                                         // on lui donne une class "nav-btn"
+buttonLogin.classList.add("nav-btn")                                         // On lui donne une class "nav-btn"
 
-const buttonLogout = document.createElement("button");
-buttonLogout.innerText = "logout";
-buttonLogout.classList.add("nav-btn");
-buttonLogout.style.display = 'none'
+const buttonLogout = document.createElement("button");                       // On crée un bouton
+buttonLogout.innerText = "logout";                                           // On le nomme "logout"
+buttonLogout.classList.add("nav-btn");                                       // On lui donne une class "nav-btn"
+buttonLogout.style.display = 'none'                                          // On le cache
 
 const firstLi = categoriesUl.querySelector("li");                            // On selectionne le li "logo"
 
@@ -25,7 +48,7 @@ const firstLi = categoriesUl.querySelector("li");                            // 
     categoriesUl.insertBefore(buttonProjets, firstLi);                       // On indique le sens d'affichage
     categoriesUl.insertBefore(buttonContact, firstLi);                       // On indique le sens d'affichage
     categoriesUl.insertBefore(buttonLogin, firstLi);                         // On indique le sens d'affichage
-    categoriesUl.insertBefore(buttonLogout, firstLi);
+    categoriesUl.insertBefore(buttonLogout, firstLi);                        // On indique le sens d'affichage
     
     const main = document.querySelector("main");                            // On selectionne le "main"
     buttonLogin.addEventListener("click", function() {                      // On crée une fonction d'écoute sur le bouton login
@@ -51,7 +74,7 @@ userMail.classList.add("userMail");                                         // O
 const labelMail = document.createElement("label");                          // On lui crée un label
 labelMail.innerText= "E-mail";                                              // Le texte sera "E-mail"
 labelMail.setAttribute("for","email");                                      // On crée un for "email"
-userMail.setAttribute("id", "e-mail");                                       // On crée un id "email"
+userMail.setAttribute("id", "e-mail");                                      // On crée un id "email"
 userMail.setAttribute("type", "email");                                     // On lui crée un type "email"
 
 
@@ -89,15 +112,15 @@ divPassword.appendChild(userPassword);                                       // 
 
 
 formulaire.appendChild(sendBtn);                                            // sendBtn sera l'enfant de formulaire
-formulaire.appendChild(forgotPassword);                                     //forgotPassword sera l'enfant de formulaire
+formulaire.appendChild(forgotPassword);                                     // forgotPassword sera l'enfant de formulaire
 
 
-main.appendChild(formulaire);                                               // formulaire sera l'enfant de main
-loginContainer.appendChild(formulaire);
-const body =document.querySelector("body");
-body.appendChild(loginContainer);  
-const footer = document.querySelector("footer");
-body.insertBefore(loginContainer, footer);
+main.appendChild(formulaire);                                               // Formulaire sera l'enfant de main
+loginContainer.appendChild(formulaire);                                     // Formulaire est l'enfant de loginContainer
+const body =document.querySelector("body");                                 // On selectionne body
+body.appendChild(loginContainer);                                           // loginContainer sera l'enfant de body
+const footer = document.querySelector("footer");                            // On séléctionne footer
+body.insertBefore(loginContainer, footer);                                  // On indique le sens d'insertion 
   
 formulaire.addEventListener("submit", async (e) => {                       // On écoute le bouton d'envoie du formulaire
   e.preventDefault();                                                      // On arrête l'évènement de rechargement
@@ -125,16 +148,17 @@ formulaire.addEventListener("submit", async (e) => {                       // On
             console.log("connexion réussie:", data);                       // On vérifie dans la console
             loginContainer.style.display = 'none';                         // Masquer le conteneur de connexion
             main.style.display = 'block';                                  // Réaffiche le "main"
-             buttonLogout.style.display = "block"
-             buttonLogin.style.display = "none"
+            divEdition.style.display = 'flex'                             // On réaffiche la "divEdition"
+            buttonLogout.style.display = "block"                           // Réaffiche le "logout"
+            buttonLogin.style.display = "none"                             // On cache le "login"
 
             const categoriesDiv = document.querySelector(".categoriesDiv");// On récupère la div
             categoriesDiv.style.display = 'none';                          // On la masque 
-            localStorage.setItem("token", data.token)
+            localStorage.setItem("token", data.token)                      // On stock le token dans le localstorage
 
         
-        const iModify = document.createElement("i")                       // On crée un i nommé iModifiy
-        iModify.classList.add("fa-regular", "fa-pen-to-square");          // On lui donne une class
+        const iModify = document.createElement("i")                        // On crée un i nommé iModifiy
+        iModify.classList.add("fa-regular", "fa-pen-to-square");           // On lui donne une class
 
  
         const btnModify = document.createElement("button");               // On crée une bouton "btnModify"
@@ -142,7 +166,7 @@ formulaire.addEventListener("submit", async (e) => {                       // On
 
         btnModify.appendChild(iModify);                                   // iModify devient l'enfant de btnModify
 
-        const textModify = document.createTextNode(" modifier");          // On crée le texte de textModify
+        const textModify = document.createTextNode("   modifier");        // On crée le texte de textModify
         btnModify.appendChild(textModify);                                // textModify devient l'enfant de btnModify
 
     
@@ -160,7 +184,14 @@ formulaire.addEventListener("submit", async (e) => {                       // On
 
        generergallery(window.gallery);                                    // On génère la gallery
 
+       const openModalBtn = document.querySelector(".btnModify");         // On récupère le bouton "btnModify"
   
+  openModalBtn.addEventListener("click", function() {                     // On écoute le bouton
+   
+    createModal();                                                        // Appeler la fonction de création de la modale depuis le fichier modale.js
+    
+});
+
         } else {
             alert("Erreur dans l’identifiant ou le mot de passe.");       // Si ça ne fonctionne pas on envoie une alerte
         }

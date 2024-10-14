@@ -1,5 +1,6 @@
 import "./categories.js"                                         // On iporte le fichier categories.js dans projet.js
-import "./login.js"                                       
+import "./login.js" 
+import "./modale.js"
 
 window.gallery = [];                                             // On indique que gallery est une variable globale
 window.generergallery = generergallery;                          // On rend la fonction generergallery globale
