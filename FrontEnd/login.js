@@ -1,8 +1,9 @@
-import { createModal } from './modale.js';
+import { createModal } from './createModal.js';
+import { generergalleryModale } from './modale-modify.js';
+
 
 const categoriesUl = document.querySelector(".categoriesUl");                // On selectionne le ul
 console.log(categoriesUl);                                                   // On verifie dans la console
-
 
 
 const divEdition = document.createElement("div");                            // On crée une div
@@ -188,8 +189,8 @@ formulaire.addEventListener("submit", async (e) => {                       // On
   
   openModalBtn.addEventListener("click", function() {                     // On écoute le bouton
    
-    createModal();                                                        // Appeler la fonction de création de la modale depuis le fichier modale.js
-    
+     createModal();                                                       // Appeler la fonction de création de la modale depuis le fichier modale.js
+    generergalleryModale();
 });
 
         } else {
