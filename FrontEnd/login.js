@@ -1,6 +1,4 @@
 import { createModal } from './createModal.js';
-import { generergalleryModale } from './modale-modify.js';
-
 
 const categoriesUl = document.querySelector(".categoriesUl");                // On selectionne le ul
 console.log(categoriesUl);                                                   // On verifie dans la console
@@ -22,8 +20,6 @@ divEdition.appendChild(textModify1);                                         // 
 
 const header = document.querySelector("header");                             // On récupère le "header"
 body.insertBefore(divEdition, header);                                       // On indique le positionnement
-
-
 
 
 const buttonProjets = document.createElement("button");                      // On crée un bouton
@@ -51,7 +47,8 @@ const firstLi = categoriesUl.querySelector("li");                            // 
     categoriesUl.insertBefore(buttonLogin, firstLi);                         // On indique le sens d'affichage
     categoriesUl.insertBefore(buttonLogout, firstLi);                        // On indique le sens d'affichage
     
-    const main = document.querySelector("main");                            // On selectionne le "main"
+const main = document.querySelector("main");                                // On selectionne le "main"
+
     buttonLogin.addEventListener("click", function() {                      // On crée une fonction d'écoute sur le bouton login
         document.querySelector("main");                                     // On sélectionne le "main"
         main.style.display = 'none';                                        // On le fait disparaitre sans le supprimer
@@ -59,48 +56,49 @@ const firstLi = categoriesUl.querySelector("li");                            // 
   
 
  const loginContainer = document.createElement("div");                      // On crée une div nommée "loginContainer"
- loginContainer.classList.add("login-container");                           // On lui donne une class "login-container"
+    loginContainer.classList.add("login-container");                        // On lui donne une class "login-container"
 
 
-    const formulaire = document.createElement("form");                      // On crée un formulaire de connection
+const formulaire = document.createElement("form");                          // On crée un formulaire de connection
     formulaire.innerHTML = "<h2>Log In</h2>";                               // On lui donne le titre "Log In"
     formulaire.classList.add("formLogin");                                  // On lui donne une class "formLogin"
 
 
 const divMail = document.createElement("div");                              // On crée une div nommée "divMail"
-divMail.classList.add("divMail");                                           // On lui donne la class "divMail"
+    divMail.classList.add("divMail");                                       // On lui donne la class "divMail"
 
 const userMail = document.createElement("input");                           // On crée un imput
-userMail.classList.add("userMail");                                         // On lui crée une class "userMail"
+    userMail.classList.add("userMail");                                     // On lui crée une class "userMail"
 const labelMail = document.createElement("label");                          // On lui crée un label
-labelMail.innerText= "E-mail";                                              // Le texte sera "E-mail"
-labelMail.setAttribute("for","email");                                      // On crée un for "email"
-userMail.setAttribute("id", "e-mail");                                      // On crée un id "email"
-userMail.setAttribute("type", "email");                                     // On lui crée un type "email"
+    labelMail.innerText= "E-mail";                                          // Le texte sera "E-mail"
+    labelMail.setAttribute("for","email");                                  // On crée un for "email"
+    userMail.setAttribute("id", "e-mail");                                  // On crée un id "email"
+    userMail.setAttribute("type", "email");                                 // On lui crée un type "email"
 
 
 
 const userPassword = document.createElement("input");                       // On crée un imput
-userPassword.classList.add("userPassword");                                 // On lui crée une class "userPassword"
+    userPassword.classList.add("userPassword");                             // On lui crée une class "userPassword"
+
 const labelPassword = document.createElement("label");                      // On lui crée un label
-labelPassword.innerText = "Mot de passe";                                   // le texte sera "Mot de passe"
-labelPassword.setAttribute("for","password");                               // On lui crée un for "password"
-userPassword.setAttribute("id", "password");                                // On lui crée un id "password"
-userPassword.setAttribute("type", "password");                              // On lui crée un type "password"
+    labelPassword.innerText = "Mot de passe";                               // le texte sera "Mot de passe"
+    labelPassword.setAttribute("for","password");                           // On lui crée un for "password"
+    userPassword.setAttribute("id", "password");                            // On lui crée un id "password"
+    userPassword.setAttribute("type", "password");                          // On lui crée un type "password"
 
 
 const divPassword = document.createElement("div");                           // On crée une div nommée "divPassword"
-divPassword.classList.add("divPassword")                                     // On lui donne une class "divPassword"
+    divPassword.classList.add("divPassword")                                 // On lui donne une class "divPassword"
 
 const sendBtn = document.createElement("button");                           // On crée un bouton
-sendBtn.setAttribute("type", "submit");                                     // De type envoie
-sendBtn.innerHTML = "Se connecter";                                         // On lui donne le texte de " Se connecter"
-sendBtn.classList.add("sendBtn");                                           // On lui donne une class "sendBtn"
+    sendBtn.setAttribute("type", "submit");                                 // De type envoie
+    sendBtn.innerHTML = "Se connecter";                                     // On lui donne le texte de " Se connecter"
+    sendBtn.classList.add("sendBtn");                                       // On lui donne une class "sendBtn"
 
 
 const forgotPassword = document.createElement("p");                         // On créé un paragraphe
-forgotPassword.classList.add("forgotPassword");                             // On lui crée une class "forgotPassword"
-forgotPassword.innerText = "Mot de passe oublié";                           // Le texte sera "Mot de passe oublié"
+    forgotPassword.classList.add("forgotPassword");                         // On lui crée une class "forgotPassword"
+    forgotPassword.innerText = "Mot de passe oublié";                       // Le texte sera "Mot de passe oublié"
 
 
 formulaire.appendChild(divMail)                                              // divMail sera l'enfant de formulaire
@@ -118,6 +116,7 @@ formulaire.appendChild(forgotPassword);                                     // f
 
 main.appendChild(formulaire);                                               // Formulaire sera l'enfant de main
 loginContainer.appendChild(formulaire);                                     // Formulaire est l'enfant de loginContainer
+
 const body =document.querySelector("body");                                 // On selectionne body
 body.appendChild(loginContainer);                                           // loginContainer sera l'enfant de body
 const footer = document.querySelector("footer");                            // On séléctionne footer
@@ -190,7 +189,7 @@ formulaire.addEventListener("submit", async (e) => {                       // On
   openModalBtn.addEventListener("click", function() {                     // On écoute le bouton
    
      createModal();                                                       // Appeler la fonction de création de la modale depuis le fichier modale.js
-    generergalleryModale();
+    
 });
 
         } else {

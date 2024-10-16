@@ -1,4 +1,5 @@
-import { addTitleAndButton, generergalleryModale } from './modale-modify.js';
+import { addTitleAndButton, generergalleryModale } from './modalModify.js';
+
 
 async function createModal() {                                 // Fonction qui crée et affiche la modale
     console.log("Création de la modale normale");
@@ -27,6 +28,19 @@ const closeModalBtn = document.createElement('button');    // Ajouter la croix d
     closeModalBtn.style.fontSize = '24px';                     // Taille de la croix
     closeModalBtn.style.color = '#000';                        // Couleur de la croix
     closeModalBtn.style.cursor = 'pointer';                    // Curseur en forme de main
+
+    
+    const closeModalBack = document.createElement('button'); // Ajouter la fleche retour
+    closeModalBack.style.display = "none"
+    closeModalBack.innerHTML = '<i class="fa-solid fa-arrow-left"></i>';                    // Symbole de la croix
+    closeModalBack.style.position = 'absolute';
+    closeModalBack.style.top = '10px';
+    closeModalBack.style.left = '10px';
+    closeModalBack.style.background = 'transparent';
+    closeModalBack.style.border = 'none';
+    closeModalBack.style.fontSize = '18px';                  // Taille de la croix
+    closeModalBack.style.color = '#000';                     // Couleur de la croix
+    closeModalBack.style.cursor = 'pointer';                 // Curseur en forme de main
 
 
 const overlay = document.createElement('div');             // Ajouter l'overlay (arrière-plan semi-transparent)
@@ -59,14 +73,19 @@ const overlay = document.createElement('div');             // Ajouter l'overlay 
     modalContent.style.gridTemplateRows = "repeat(3, auto)";
     modalContent.style.gap = ("20px 7px");
     modalContent.style.padding = "30px";
+    modalContent.style.marginBottom = "10px";
     modalContent.style.borderBottom = "1px solid #B3B3B3";
 
     
   
-    modal.appendChild(closeModalBtn);                          // Ajout la croix à la modale
+   
     modalContainer.appendChild(titleContainer);
-    modalContainer.appendChild(modalContent);         // Ajout de modalContent dans la modale
+    modalContainer.appendChild(modalContent);                  // Ajout de modalContent dans la modale
+
+    modal.appendChild(closeModalBtn);                          // Ajout la croix à la modale
+    modal.appendChild(closeModalBack);
     modal.appendChild(modalContainer); 
+
     document.body.appendChild(modal);                          // Ajoute de la modale au body
     document.body.appendChild(overlay);                        // Ajout de l'overlay au body
     
@@ -82,12 +101,9 @@ overlay.addEventListener('click', function() {             // Fermer la modale e
         overlay.remove();
     });  
 
- 
-await generergalleryModale(modalContent);
-
 addTitleAndButton(titleContainer, modalContainer);
 
-
+await generergalleryModale(modalContent);
 
 }
 

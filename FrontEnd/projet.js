@@ -1,7 +1,8 @@
 import "./categories.js"                                         // On iporte le fichier categories.js dans projet.js
 import "./login.js" 
 import "./createModal.js"
-import "./modale-modify.js"
+import "./modalModify.js"
+import "./modalAddForm.js"
 
 window.gallery = [];                                             // On indique que gallery est une variable globale
 window.generergallery = generergallery;                          // On rend la fonction generergallery globale
@@ -30,6 +31,7 @@ function generergallery(gallery) {                               // On crée une
 divGallery.appendChild(projetElement);                            // ProjetElement devient l'enfant de divGallery
 projetElement.appendChild(imageElement);                          // ImageElement devient l'enfant de projetElement
 projetElement.appendChild(titleElement);                          // TitleElement devient l'enfant de projetElement
+
  }
 }
 
