@@ -1,8 +1,11 @@
+import { deleteProjet } from "./deleteProjet.js";
+import { modalAddForm } from "./modalAddForm.js";
 
+// Fonction d'ajout du titre et du bouton d'ajout
+function addTitleAndButton(titleContainer, modalContainer) {          
 
-function addTitleAndButton(titleContainer, modalContainer) {          // Fonction d'ajout du titre et du bouton d'ajout
-
-    const modalTitle = document.createElement("p");                   // Titre de la modale
+// Titre de la modale
+    const modalTitle = document.createElement("p");                   
         modalTitle.innerText = "Galerie photo";
         modalTitle.classList.add("modalTitle");
         modalTitle.style.display = "flex";
@@ -12,8 +15,8 @@ function addTitleAndButton(titleContainer, modalContainer) {          // Fonctio
         modalTitle.style.color = "black";
         modalTitle.style.fontSize = "20px"
    
-   
-   const btnAdd = document.createElement("button");                   // Création du bouton d'ajout de photo
+    // Création du bouton d'ajout de photo
+   const btnAdd = document.createElement("button");                  
         btnAdd.classList.add("btnAdd");
         btnAdd.innerText = "Ajouter une photo"
         btnAdd.style.display = "flex";
@@ -33,16 +36,23 @@ function addTitleAndButton(titleContainer, modalContainer) {          // Fonctio
 
    
     titleContainer.appendChild(modalTitle);                           // Ajout du titre à la modale
-    modalContainer.appendChild(btnAdd);                               // Ajout du bouton Ajouter
+    modalContainer.appendChild(btnAdd);                               // Ajout du bouton à la modale
 
-    btnAdd.addEventListener("click", function(){                      // On écoute le bouton " btnAdd"
-    
+ // On vérifie d'abord s'il y a déjà une écoute active
+ if (!btnAdd.hasAttribute("data-listened")) {
+    btnAdd.addEventListener("click", function(){                  
+        modalAddForm();
+        
+    const btnAdd = document.querySelector(".btnAdd");
+    btnAdd.style.display = "none";
         console.log("Bouton 'Ajouter une photo' cliqué");
     });
+    btnAdd.setAttribute("data-listened", "true"); // Pour éviter d'ajouter plusieurs écouteurs
+}
     
  }
    
-   
+   // Fonction pour generer la galerie dans la modale
 async function generergalleryModale (modalContent){
 
     try {
@@ -63,6 +73,7 @@ gallery.forEach(projet => {                                           // On cré
       
  const deleteBtn = document.createElement("button");                 // Création du bouton poubelle
     deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';   // Icône poubelle
+    deleteBtn.classList.add("deleteBtn");
     deleteBtn.style.position = "absolute";
     deleteBtn.style.top = "5px";
     deleteBtn.style.right = "5px";
@@ -84,6 +95,15 @@ modalElement.appendChild(modalImage);                              // Ajout de l
 modalElement.appendChild(deleteBtn);                               // Ajout de la poubelle à l'article
 modalContent.appendChild(modalElement);                            // Ajout de l'article à la div   
 
+
+deleteBtn.addEventListener("click", async () => {                  // On écoute le bouton supprimée
+    const confirmDelete = confirm("Êtes-vous sûr de vouloir supprimer cette image ?");  // On demande une confirmation
+    if (confirmDelete){                                            // Si la demande est confirmée on peut supprimer
+           await deleteProjet(projet.id, modalElement);            // On utilise alors la fonction de suppression
+         console.log("Image supprimée avec succès! ");             // On fait un console pour vérifier
+            
+    }
+});
       
    }); 
 

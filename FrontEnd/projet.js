@@ -3,6 +3,8 @@ import "./login.js"
 import "./createModal.js"
 import "./modalModify.js"
 import "./modalAddForm.js"
+import "./deleteProjet.js"
+
 
 window.gallery = [];                                             // On indique que gallery est une variable globale
 window.generergallery = generergallery;                          // On rend la fonction generergallery globale
