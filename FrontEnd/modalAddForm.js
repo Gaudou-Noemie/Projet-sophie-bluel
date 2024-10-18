@@ -4,7 +4,7 @@ function modalAddForm () {
         mondalTitle.innerText = "Ajout photo";
 
     const btnAdd = document.querySelector(".btnAdd");
-    btnAdd.style.display = "none";
+        btnAdd.style.display = "none";
         // btnAdd.innerText = "Valider";
         // btnAdd.setAttribute("type", "submit");
         // console.log("Bouton Valider créé et mis à jour");
@@ -43,27 +43,28 @@ function modalAddForm () {
      const submitBtn = document.createElement("button");
      submitBtn.setAttribute("type", "submit");
      submitBtn.innerText = "Valider";
-     btnAdd.style.display = "flex";
-     btnAdd.style.justifyContent = "space-around";
-     btnAdd.style.border = "none";
-     btnAdd.style.fontFamily = "Syne";
-     btnAdd.style.fontWeight = "300";
-     btnAdd.style.color = "white";
-     btnAdd.style.backgroundColor = "#1D6154"
-     btnAdd.style.margin = "2em auto";
-     btnAdd.style.padding = "8px";
-     btnAdd.style.width = "250px";
-     btnAdd.style.textAlign = "center";
-     btnAdd.style.borderRadius = "60px";
+     submitBtn.style.display = "flex";
+     submitBtn.style.justifyContent = "space-around";
+     submitBtn.style.border = "none";
+     submitBtn.style.fontFamily = "Syne";
+     submitBtn.style.fontWeight = "300";
+     submitBtn.style.color = "white";
+     submitBtn.style.backgroundColor = "#1D6154"
+     submitBtn.style.margin = "2em auto";
+     submitBtn.style.padding = "8px";
+     submitBtn.style.width = "250px";
+     submitBtn.style.textAlign = "center";
+     submitBtn.style.borderRadius = "60px";
      
 
 
         modalForm.appendChild(fileInput);                                   // fileInput est rajouté à modalForm
         modalForm.appendChild(titleInput);                                  // titleInput est rajouté à modalForm    
         modalForm.appendChild(categoryInput);                               // categoryInput est rajouté à modalForm
-        modalForm.appendChild(submitBtn); // Ajout du bouton Valider au formulaire
+        const modalContainer = document.querySelector(".modalContainer");
+        modalContainer.appendChild(submitBtn);                                   // Ajout du bouton Valider au formulaire
         modalContent.appendChild(modalForm);                                // modalForm est rajouté à modalContent
-        
+
 console.log("Formulaire ajouté à la modale");
         
 modalForm.addEventListener("submit", async (e) =>{
@@ -71,10 +72,14 @@ modalForm.addEventListener("submit", async (e) =>{
     console.log("Soumission du formulaire...");
 
     const title = titleInput.value;
-    const  categoryId = categoryInput.value;
+    const  categoryId = parseInt(categoryInput.value, 10);
     const imageFile = fileInput.files[0];
-    console.log("Données du formulaire :", { title, categoryId, imageFile });
 
+    console.log("Données du formulaire :", { title, categoryId, imageFile });
+if (!title || !categoryId || !imageFile) {
+        alert("Tous les champs doivent être remplis !");
+        return;
+    }
     console.log("Titre:", title);
     console.log("Catégorie ID:", categoryId);
     console.log("Fichier image:", imageFile);
@@ -87,7 +92,7 @@ modalForm.addEventListener("submit", async (e) =>{
     const formData = new FormData();
     formData.append("title", title);
     formData.append("image", imageFile);
-    formData.append("categoryId", categoryId);
+    formData.append("categoryId", categoryId.toString());
     console.log("FormData créé avec succès");
 
     try {
@@ -108,8 +113,11 @@ modalForm.addEventListener("submit", async (e) =>{
                 titleInput.value = "";
                 categoryInput.value = "";
                 fileInput.value = "";
-               } else {
-                console.error ("Erreur lors de l'envoie de l'image:", res.statusText);
+               } else {   
+                const errorData = await res.json();
+                console.error ("Erreur lors de l'envoie de l'image:", res.statusText, errorData);
+                return;
+                
                } 
                
     }catch (error){

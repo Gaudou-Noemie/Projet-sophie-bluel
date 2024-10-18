@@ -57,6 +57,7 @@ const closeModalBtn = document.createElement('button');
 
  // Conteneur principal de la modale
     const modalContainer = document.createElement('div');
+       modalContainer.classList.add("modalContainer");
        modalContainer.style.display = 'flex';
        modalContainer.style.flexDirection = 'column';
        modalContainer.style.height = '100%';                 
