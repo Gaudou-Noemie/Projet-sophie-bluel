@@ -16,7 +16,7 @@ function addTitleAndButton(titleContainer, modalContainer) {
         modalTitle.style.fontSize = "20px"
    
     // Création du bouton d'ajout de photo
-   const btnAdd = document.createElement("button");                  
+    const btnAdd = document.createElement("button");                  
         btnAdd.classList.add("btnAdd");
         btnAdd.innerText = "Ajouter une photo"
         btnAdd.style.display = "flex";
@@ -32,9 +32,6 @@ function addTitleAndButton(titleContainer, modalContainer) {
         btnAdd.style.textAlign = "center";
         btnAdd.style.borderRadius = "60px";
         
-
-
-   
     titleContainer.appendChild(modalTitle);                           // Ajout du titre à la modale
     modalContainer.appendChild(btnAdd);                               // Ajout du bouton à la modale
 
@@ -43,10 +40,10 @@ function addTitleAndButton(titleContainer, modalContainer) {
     btnAdd.addEventListener("click", function(){                  
         modalAddForm();
         
-    const btnAdd = document.querySelector(".btnAdd");
+const btnAdd = document.querySelector(".btnAdd");
     btnAdd.style.display = "none";
         console.log("Bouton 'Ajouter une photo' cliqué");
-    });
+});
     btnAdd.setAttribute("data-listened", "true"); // Pour éviter d'ajouter plusieurs écouteurs
 }
     

@@ -20,18 +20,18 @@ const modal = document.createElement('div');
 
  // Ajouter la croix de fermeture en haut à droite
 const closeModalBtn = document.createElement('button');
-    closeModalBtn.innerHTML = '&times;';                       // Symbole de la croix
+    closeModalBtn.innerHTML = '&times;';                                 // Symbole de la croix
     closeModalBtn.style.position = 'absolute';
     closeModalBtn.style.top = '10px';
     closeModalBtn.style.right = '10px';
     closeModalBtn.style.background = 'transparent';
     closeModalBtn.style.border = 'none';
-    closeModalBtn.style.fontSize = '24px';                    
-    closeModalBtn.style.color = '#000';                        
-    closeModalBtn.style.cursor = 'pointer';                    // Curseur en forme de main
+    closeModalBtn.style.fontSize = '24px';
+    closeModalBtn.style.color = '#000';
+    closeModalBtn.style.cursor = 'pointer';
 
     // Ajouter la fleche retour
-    const closeModalBack = document.createElement('button');
+const closeModalBack = document.createElement('button');
     closeModalBack.classList.add("closeModalBack");
     closeModalBack.style.display = "none"
     closeModalBack.innerHTML = '<i class="fa-solid fa-arrow-left"></i>'; // Symbole de la flèche
@@ -40,12 +40,12 @@ const closeModalBtn = document.createElement('button');
     closeModalBack.style.left = '10px';
     closeModalBack.style.background = 'transparent';
     closeModalBack.style.border = 'none';
-    closeModalBack.style.fontSize = '18px';                  
-    closeModalBack.style.color = '#000';                     
-    closeModalBack.style.cursor = 'pointer';                 // Curseur en forme de main
+    closeModalBack.style.fontSize = '18px';
+    closeModalBack.style.color = '#000';
+    closeModalBack.style.cursor = 'pointer';
 
  // Ajouter l'overlay (arrière-plan semi-transparent)
-  const overlay = document.createElement('div');
+const overlay = document.createElement('div');
     overlay.classList.add('overlay');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -56,33 +56,33 @@ const closeModalBtn = document.createElement('button');
     overlay.style.zIndex = '999';
 
  // Conteneur principal de la modale
-    const modalContainer = document.createElement('div');
-       modalContainer.classList.add("modalContainer");
-       modalContainer.style.display = 'flex';
-       modalContainer.style.flexDirection = 'column';
-       modalContainer.style.height = '100%';                 
-       modalContainer.style.overflowY = 'auto';              
+const modalContainer = document.createElement('div');
+    modalContainer.classList.add("modalContainer");
+    modalContainer.style.display = 'flex';
+    modalContainer.style.flexDirection = 'column';
+    modalContainer.style.height = '100%';                 
+    modalContainer.style.overflowY = 'auto';              
 
 
 // Créer un conteneur pour le titre
-    const titleContainer = document.createElement('div');
-       titleContainer.style.textAlign = 'center';
-       titleContainer.style.marginBottom = '20px';               
+const titleContainer = document.createElement('div');
+    titleContainer.style.textAlign = 'center';
+    titleContainer.style.marginBottom = '20px';               
 
 
 // Créer le contenu de la modale
-    const modalContent = document.createElement('div');
-       modalContent.classList.add("modalContent");
-       modalContent.style.display = "grid";
-       modalContent.style.gridTemplateColumns = "repeat(5, 1fr)"; 
-       modalContent.style.gridTemplateRows = "repeat(3, auto)";
-       modalContent.style.gap = ("20px 7px");
-       modalContent.style.padding = "30px";
-       modalContent.style.marginBottom = "10px";
-       modalContent.style.borderBottom = "1px solid #B3B3B3";
+const modalContent = document.createElement('div');
+    modalContent.classList.add("modalContent");
+    modalContent.style.display = "grid";
+    modalContent.style.gridTemplateColumns = "repeat(5, 1fr)"; 
+    modalContent.style.gridTemplateRows = "repeat(3, auto)";
+    modalContent.style.gap = ("20px 7px");
+    modalContent.style.padding = "30px";
+    modalContent.style.marginBottom = "10px";
+    modalContent.style.borderBottom = "1px solid #B3B3B3";
 
    
-    modalContainer.appendChild(titleContainer);                 // Ajout de titleModal dans la modaleContainer
+    modalContainer.appendChild(titleContainer);                // Ajout de titleModal dans la modaleContainer
     modalContainer.appendChild(modalContent);                  // Ajout de modalContent dans la modaleContainer
     modal.appendChild(closeModalBtn);                          // Ajout la croix à la modale
     modal.appendChild(closeModalBack);                         // Ajout de la flèche reetour dans la modale
@@ -91,27 +91,27 @@ const closeModalBtn = document.createElement('button');
     document.body.appendChild(overlay);                        // Ajout de l'overlay au body
     
 
-closeModalBtn.addEventListener('click', function() {       // Fermer la modale en cliquant sur la croix
+closeModalBtn.addEventListener('click', function() {           // Fermer la modale en cliquant sur la croix
         modal.remove();
         overlay.remove();
     });   
 
-    closeModalBack.addEventListener("click", function (){
+    closeModalBack.addEventListener("click", function (){      // On lance une écoute
         clickcloseModalBack(modal,overlay)
         console.log("J'ai cliqué sur le bouton retour");
     });
 
-overlay.addEventListener('click', function() {             // Fermer la modale en cliquant sur l'overlay                
+overlay.addEventListener('click', function() {                 // Fermer la modale en cliquant sur l'overlay                
         modal.remove();
         overlay.remove();
     });  
 
-addTitleAndButton(titleContainer, modalContainer);         // On lance la fonction du titre et du container
+addTitleAndButton(titleContainer, modalContainer);             // On lance la fonction du titre et du container
 
-await generergalleryModale(modalContent);                 // On lance la fonction pour generer la galerie
+await generergalleryModale(modalContent);                      // On lance la fonction pour generer la galerie
 
 
-function clickcloseModalBack(modal,overlay){
+function clickcloseModalBack(modal,overlay){                   // On lance la fonction de la flèche retour 
     modal.remove();
     overlay.remove();
     createModal();
