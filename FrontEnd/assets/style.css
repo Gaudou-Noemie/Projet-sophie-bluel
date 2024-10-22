@@ -159,8 +159,10 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
+	aspect-ratio: 122 / 163;
+	object-fit: cover;
 }
+
 #contact {
 	width: 50%;
     margin: auto;
@@ -326,3 +328,4 @@ footer {
 	width: 20px;
 	
 }
+

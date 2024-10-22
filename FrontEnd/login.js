@@ -178,7 +178,7 @@ formulaire.addEventListener("submit", async (e) => {                         // 
        
     const galleryDiv = document.querySelector(".gallery");                   // On récupère la galerie 
         galleryDiv.parentNode.insertBefore(sectionModify, galleryDiv);       // On insert la section avant la galerie
-
+        galleryDiv.innerText = "";
        generergallery(window.gallery);                                       // On génère la gallery
 
     const openModalBtn = document.querySelector(".btnModify");               // On récupère le bouton "btnModify"

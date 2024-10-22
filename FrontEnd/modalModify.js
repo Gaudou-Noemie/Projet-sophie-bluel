@@ -15,7 +15,7 @@ function addTitleAndButton(titleContainer, modalContainer) {
         modalTitle.style.color = "black";
         modalTitle.style.fontSize = "20px"
    
-    // Création du bouton d'ajout de photo
+// Création du bouton d'ajout de photo
     const btnAdd = document.createElement("button");                  
         btnAdd.classList.add("btnAdd");
         btnAdd.innerText = "Ajouter une photo"

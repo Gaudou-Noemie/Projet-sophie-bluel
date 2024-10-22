@@ -1,4 +1,4 @@
-
+import { createErrorMessage, fetchCategory, closeModal, showSuccessMessage } from './functionModalAdd.js'; // Import des fonctions
 
 function modalAddForm () {
 
@@ -184,49 +184,23 @@ const submitBtn = document.createElement("button");
      
 
 
-        modalForm.appendChild(fileInputWrapper);                                   // fileInput est rajouté à modalForm
+        modalForm.appendChild(fileInputWrapper);                            // fileInput est rajouté à modalForm
         modalForm.appendChild(labelTitle);
         modalForm.appendChild(titleInput);                                  // titleInput est rajouté à modalForm    
         modalForm.appendChild(labelCategory);
         modalForm.appendChild(categoryInput);                               // categoryInput est rajouté à modalForm
-        
-    const modalContainer = document.querySelector(".modalContainer");
-        const modal = document.querySelector(".modal");
-        modal.style.paddingBottom = "10px"
 
-        modalContainer.appendChild(submitBtn);                                   // Ajout du bouton Valider au formulaire
+        fetchCategory(categoryInput);
+        
+const modalContainer = document.querySelector(".modalContainer");
+    const modal = document.querySelector(".modal");
+    modal.style.paddingBottom = "10px"
+
+        modalContainer.appendChild(submitBtn);                              // Ajout du bouton Valider au formulaire
         modalContent.appendChild(modalForm);                                // modalForm est rajouté à modalContent
 
 console.log("Formulaire ajouté à la modale");
      
-function createErrorMessage(message) {
-    const errorMessage = document.createElement("div");
-    errorMessage.style.backgroundColor = "#FF6F61"; // Couleur rouge pour l'erreur
-    errorMessage.style.color = "white";
-    errorMessage.style.padding = "10px";
-    errorMessage.style.margin = "10px 0";
-    errorMessage.style.borderRadius = "5px";
-    errorMessage.style.fontSize = "14px";
-    errorMessage.style.textAlign = "center";
-    errorMessage.innerText = message;
-    errorMessage.classList.add("error-message");
-    return errorMessage;
-}
-
-function createSuccessMessage(message) {
-    const successMessage = document.createElement("div");
-    successMessage.style.backgroundColor = "#4CAF50";  // Couleur verte pour le succès
-    successMessage.style.color = "white";
-    successMessage.style.padding = "15px";
-    successMessage.style.margin = "10px 0";
-    successMessage.style.borderRadius = "5px";
-    successMessage.style.fontSize = "16px";
-    successMessage.style.textAlign = "center";
-    successMessage.innerText = message;
-    successMessage.classList.add("success-message");
-    return successMessage;
-}
-
 modalForm.addEventListener("submit", async (e) =>{
     e.preventDefault();
     console.log("Soumission du formulaire...");
@@ -258,8 +232,13 @@ modalForm.addEventListener("submit", async (e) =>{
 
     // Vérification de l'image
     if (!imageFile) {
+
+        const existingErrors = fileInputWrapper.querySelectorAll(".error-message");      // Supprimer les anciens messages d'erreur liés à l'image
+        existingErrors.forEach(error => error.remove());
+
         const errorMessage = createErrorMessage("Une image est requise.");
         fileInputWrapper.appendChild(errorMessage);
+        fileInput.value = "";                                                            // Réinitialise le champ de fichier pour permettre une nouvelle sélection
         hasError = true;
     } else {
         const maxSize = 4 * 1024 * 1024;
@@ -324,48 +303,8 @@ modalForm.addEventListener("submit", async (e) =>{
     }
 });
 
- async function fetchCategory(){
-    console.log("Récupération des catégories depuis l'API");
-    try {
-        const rep = await fetch("http://localhost:5678/api/categories");
-        if (!rep.ok) {
-            throw new Error("Erreur lors de la récupération des catégories"); 
-        } 
-        const categories = await rep.json();
-        console.log("Catégories récupérées:", categories);
-       
-        categories.forEach((category) => {                                     // On fait une boucle pour récupérer les categorie
-            const option = document.createElement("option");               // On crée une option
-            option.value = category.id;                                    // La valeur sera id de catégorie
-            option.textContent = category.name;                            // Le texte sera le name de catégorie
-            categoryInput.appendChild(option);                             // On ajout option a categoryInput            
-        });
-    } catch (error){
-        console.error("Erreur lors de la récupération des catégories:", error);
-    }
- }       
-fetchCategory();
+     
 
-
-
-function showSuccessMessage(message){
-           const successMessage = createSuccessMessage(message);
-           const main = document.querySelector("main");
-           main.prepend(successMessage);  // Ajouter le message en haut du formulaire
-
-                // Cacher le message après quelques secondes
-                setTimeout(() => {
-                    successMessage.style.display = "none";
-                }, 3000); // Cacher après 3 secondes
-           }
-
-
-function closeModal(){
-      const modal = document.querySelector(".modal");
-    const overlay = document.querySelector(".overlay");
-    if (modal) modal.remove();
-    if (overlay) overlay.remove();
-}
 
 }
 

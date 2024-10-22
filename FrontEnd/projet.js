@@ -4,6 +4,7 @@ import "./createModal.js"
 import "./modalModify.js"
 import "./modalAddForm.js"
 import "./deleteProjet.js"
+import "./functionModalAdd.js"
 
 
 window.gallery = [];                                             // On indique que gallery est une variable globale
