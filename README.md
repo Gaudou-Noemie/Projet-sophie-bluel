@@ -1,5 +1,5 @@
 
-# 🏗️ Projet 3 : Création d'un site dynamique – OpenClassrooms  
+# 🏗️ Projet 3 : Sophie Bluel – OpenClassrooms  
 
 Ce projet vise à développer des fonctionnalités dynamiques pour un site d'architecte, en utilisant JavaScript pour rendre l'expérience utilisateur interactive et connectée avec un back-end.  
 
