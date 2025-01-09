@@ -16,11 +16,11 @@ L'objectif est de transformer la version statique existante du site en une versi
    - Gérer l'ajout et la suppression de fichiers avec Multer ou un service de stockage (S3).
    - 
 ## Objectifs pédagogiques
- **Connecter le front-end et le back-end** : Utiliser une API REST avec React et Node.js/Express.
- **Améliorer les compétences en JavaScript, HTML et CSS** : Créer des sites dynamiques et interactifs.
- **Sécuriser l'application** : Implémenter une authentification avec JWT.
- **Créer des interfaces dynamiques** : Ajouter des formulaires et des modales interactives.
- **Gérer les requêtes serveur** : Utiliser Node.js et Express pour les requêtes HTTP.
+- **Connecter le front-end et le back-end** : Utiliser une API REST avec React et Node.js/Express.
+- **Améliorer les compétences en JavaScript, HTML et CSS** : Créer des sites dynamiques et interactifs.
+- **Sécuriser l'application** : Implémenter une authentification avec JWT.
+- **Créer des interfaces dynamiques** : Ajouter des formulaires et des modales interactives.
+- **Gérer les requêtes serveur** : Utiliser Node.js et Express pour les requêtes HTTP.
 
 ## 🛠️2. Installer et lancer le serveur back-end  
 1. Accédez au dossier `backend` dans le terminal :  
