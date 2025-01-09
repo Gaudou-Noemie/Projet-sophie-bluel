@@ -19,17 +19,17 @@ L'objectif est de transformer la version statique existante du site en une versi
 
 3. **Modale d'upload de médias** :  
    - Développer une interface modale permettant d'ajouter de nouveaux projets ou médias.  
-   - Gérer les interactions utilisateurs (ajout, prévisualisation, suppression).  
+   - Gérer les interactions utilisateurs (ajout, prévisualisation, suppression).
+   - 
+## Objectifs pédagogiques
+1. **Comprendre l'intégration du front-end avec le back-end** : Apprendre à utiliser une API REST pour échanger des données entre le front-end (React) et le back-end (Node.js/Express).
+2. **Renforcer les compétences en JavaScript, HTML et CSS** : Acquérir des compétences pratiques dans la création de sites dynamiques en utilisant JavaScript, HTML et CSS pour manipuler le DOM et gérer les interactions.
+3. **Gestion de la sécurité** : Implémenter un système d'authentification sécurisé avec JWT pour protéger les zones d'administration du site.
+4. **Développer des interfaces utilisateur dynamiques** : Créer des éléments interactifs comme des formulaires de connexion, des modales d'upload et des pages de présentation dynamiques.
+5. **Apprendre à gérer les requêtes côté serveur** : Utiliser Node.js et Express pour gérer des requêtes HTTP et gérer des ressources côté serveur.
+6. **Travail en équipe et bonnes pratiques de développement** : Comprendre et utiliser des pratiques de développement modernes, telles que la gestion des erreurs, les validations de formulaire et l'utilisation de Git pour le versioning.
 
-## 🚀 Technologies utilisées  
-
-- **HTML5** : Pour la structure de base des pages.  
-- **CSS3** : Pour le style et la mise en page.  
-- **JavaScript (ES6+)** : Pour rendre le site interactif et gérer les requêtes.  
-- **API REST** : Communication avec le back-end pour persister les données.  
-
-## 🛠️ Installation et utilisation  
-### 2. Installer et lancer le serveur back-end  
+## 🛠️2. Installer et lancer le serveur back-end  
 1. Accédez au dossier `backend` dans le terminal :  
    ```bash
    cd backend
