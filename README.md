@@ -2,7 +2,7 @@
 # Projet 3 : Sophie Bluel – OpenClassrooms  
 ## Description du projet  
 
-L'objectif est de transformer la version statique existante du site en une version dynamique en ajoutant de nouvelles fonctionnalités et en intégrant le back-end pour persister les données.  
+L'objectif du projet était de transformer la version statique du site en une version dynamique, en ajoutant de nouvelles fonctionnalités et en intégrant le back-end, tout en utilisant une API pour la persistance des données liées aux projets.  
 
 ## Spécifications techniques
 **Intégration dynamique des projets** :  
