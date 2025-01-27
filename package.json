@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "cookie": "^0.7.2",
-    "path-to-regexp": "~0.1.12"
-  }
-}
